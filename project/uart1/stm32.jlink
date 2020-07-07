@@ -1,13 +1,12 @@
-# On Windows 10
-# JLink CL 
-# Burn Fireware to Device
-
-si 1    # Select SWD Port
+// On Ubuntu
+// JLinkExe 
+// Burn Fireware to Device
+si 1    // Select SWD Port
 speed 4000
 device STM32F072C8
-r       # Reset target
-h       # Halt Target
-loadfile build/usart1.hex 0x08000000      # Download file to Aim Address
-setpc 0x08000000    # Set PC Point
-g       # Go/Run
-q       # Quit
+r       // Reset target
+//halt       // Halt Target
+loadfile build/stm32f072.hex 0x08000000      // Download file to Aim Address
+setpc 0x08000000    // Set PC Point
+//go      // Go/Run
+q       // Quit
