@@ -13,7 +13,7 @@
 ######################################
 # target
 ######################################
-TARGET = gpio_led
+TARGET = stm32f072
 
 ######################################
 # building variables
@@ -114,8 +114,7 @@ CFLAGS += -MMD -MP -MF"$(@:%.o=%.d)"
 # LDFLAGS
 #######################################
 # link script
-#LDSCRIPT = core/stm32_flash.ld
-LDSCRIPT = core/STM32F072VB_FLASH.ld
+LDSCRIPT = core/STM32F072C8_FLASH.ld
 
 # libraries
 LIBS = -lc -lm -lnosys 

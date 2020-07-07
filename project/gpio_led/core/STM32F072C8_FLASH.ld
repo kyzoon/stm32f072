@@ -3,8 +3,8 @@
 **
 **  File        : stm32_flash.ld
 **
-**  Abstract    : Linker script for STM32F072VB Device with
-**                128KByte FLASH, 16KByte RAM
+**  Abstract    : Linker script for STM32F072C8 Device with
+**                64KByte FLASH, 16KByte RAM
 **
 **                Set heap size, stack size and stack location according
 **                to application requirements.
@@ -15,7 +15,7 @@
 **
 **  Environment : Atollic TrueSTUDIO(R)
 **
-**  Distribution: The file is distributed “as is,” without any warranty
+**  Distribution: The file is distributed "as is," without any warranty
 **                of any kind.
 **
 **  (c)Copyright Atollic AB.
@@ -40,7 +40,7 @@ _Min_Stack_Size = 0x400; /* required amount of stack */
 /* Specify the memory areas */
 MEMORY
 {
-FLASH (rx)      : ORIGIN = 0x8000000, LENGTH = 128K
+FLASH (rx)     : ORIGIN = 0x08000000, LENGTH = 64K
 RAM (xrw)      : ORIGIN = 0x20000000, LENGTH = 16K
 }
 
