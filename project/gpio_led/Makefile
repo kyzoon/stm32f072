@@ -31,6 +31,13 @@ SZ = ${PREFIX}size
 HEX = $(CP) -O ihex
 BIN = $(CP) -O binary -S
 
+# Solve diff host palatform use diff JLink command
+ifeq ($(OS), Windows_NT)
+	JLINK = JLink
+else
+	JLINK = JLinkExe
+endif
+
 CPU = -mcpu=cortex-m0
 FPU = 
 FLOAT-ABI =
@@ -59,7 +66,6 @@ all: ${OBJ_DIR}/${TARGET}.elf ${OBJ_DIR}/${TARGET}.hex ${OBJ_DIR}/${TARGET}.bin
 
 .PHONY: test
 test:
-	@echo ${OBJS:.o=.d} ${OBJS}
 	@echo '###########'
 
 ${OBJ_DIR}/%.hex: ${OBJ_DIR}/%.elf
@@ -73,7 +79,7 @@ ${OBJ_DIR}/${TARGET}.elf: ${OBJS:.o=.d} ${OBJS}
 	${SZ} $@
 
 %.o: %.c
-	${CC} $(CFLAGS) ${INC_PATH} -o ${OBJ_DIR}/$@ -c $<
+	${CC} $(CFLAGS) ${INC_PATH} -Wa,-a,-ad,-alms=${OBJ_DIR}/$(notdir $(<:.c=.lst)) -o ${OBJ_DIR}/$@ -c $<
 
 %.o: %.s
 	${AS} $(ASFLAGS) -o ${OBJ_DIR}/$@ -c $<
@@ -95,5 +101,4 @@ clean:
 
 .PHONY: burn
 burn:
-	@JLinkExe stm32.jlink
-
+	$(JLINK) stm32.jlink
