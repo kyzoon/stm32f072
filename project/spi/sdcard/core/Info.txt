@@ -1,0 +1,6 @@
+*.s Copy from 
+STM32F0xx_StdPeriph_Lib_V1.5.0\Libraries\CMSIS\Device\ST\STM32F0xx\Source\Templates\gcc_ride7
+
+*.ld Copy from 
+STM32F0xx_StdPeriph_Lib_V1.5.0\Projects\STM32F0xx_StdPeriph_Templates\TrueSTUDIO\STM32F072\STM32F072VB_FLASH.ld
+Modify file with STM32F072C8 Flash and RAM Parameters

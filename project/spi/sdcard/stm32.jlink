@@ -1,0 +1,11 @@
+// On Ubuntu
+// JLinkExe 
+// Burn Fireware to Device
+si 1    // Select SWD Port
+speed 4000
+device STM32F072C8
+r       // Reset target
+loadfile build/stm32f072.hex 0x08000000      // Download file to Aim Address
+setpc 0x08000000    // Set PC Point
+//g       // Go/Run
+q       // Quit
